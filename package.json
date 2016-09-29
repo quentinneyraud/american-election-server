@@ -1,0 +1,60 @@
+{
+  "name": "american-election-server",
+  "version": "1.0.0",
+  "description": "",
+  "main": "dist/index.js",
+  "files": [
+    "bin/",
+    "dist/"
+  ],
+  "scripts": {
+    "clean": "rimraf dist",
+    "lint": "eslint src",
+    "check": "npm run lint -s",
+    "watch": "watch 'npm run build' src",
+    "prebuild": "npm run check -s && npm run clean -s",
+    "build": "babel --optional runtime src -d dist",
+    "coveralls": "npm run coverage -s && coveralls < coverage/lcov.info",
+    "postcoveralls": "rimraf ./coverage",
+    "prepublish": "npm run build -s",
+    "deploy": "git pull --rebase origin master && git push origin master",
+    "patch": "npm version patch && npm publish",
+    "minor": "npm version minor && npm publish",
+    "major": "npm version major && npm publish",
+    "postpublish": "git push origin master --follow-tags",
+    "toc": "doctoc --github --title \"# Changelog\" CHANGELOG.md"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/quentinneyraud/american-election-server.git"
+  },
+  "keywords": [
+    "node"
+  ],
+  "author": "Quentin Neyraud <quentin.neyraud@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/quentinneyraud/american-election-server/issues"
+  },
+  "homepage": "https://github.com/quentinneyraud/american-election-server#readme",
+  "devDependencies": {
+    "babel-cli": "^6.16.0",
+    "babel-core": "^6.16.0",
+    "babel-eslint": "^4.1.6",
+    "babel-preset-es2015": "^6.16.0",
+    "coveralls": "^2.11.4",
+    "dependency-check": "^2.5.1",
+    "doctoc": "^0.15.0",
+    "eslint": "^1.10.1",
+    "isparta": "^4.0.0",
+    "rimraf": "^2.4.2",
+    "tap-spec": "^4.1.1",
+    "tape": "^4.2.2",
+    "watch": "^0.16.0"
+  },
+  "dependencies": {
+    "fs": "0.0.1-security",
+    "http": "0.0.0",
+    "socket.io": "^1.4.8"
+  }
+}
