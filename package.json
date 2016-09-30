@@ -22,7 +22,8 @@
     "minor": "npm version minor && npm publish",
     "major": "npm version major && npm publish",
     "postpublish": "git push origin master --follow-tags",
-    "toc": "doctoc --github --title \"# Changelog\" CHANGELOG.md"
+    "toc": "doctoc --github --title \"# Changelog\" CHANGELOG.md",
+    "start-server": "npm run build && node dist/index.js"
   },
   "repository": {
     "type": "git",
